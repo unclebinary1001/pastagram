@@ -49,6 +49,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        findViewById<Button>(R.id.logout).setOnClickListener {
+            ParseUser.logOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         findViewById<Button>(R.id.takePicture).setOnClickListener {
             // Launch camera to let user take picture
             onLaunchCamera()
@@ -73,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Log.i(TAG, "Successfully saved post")
                 // TODO: Resetting the EditText field to be empty
+                findViewById<EditText>(R.id.et_description).getText().clear()
             }
         }
     }
